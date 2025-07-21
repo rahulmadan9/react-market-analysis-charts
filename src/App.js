@@ -5,13 +5,13 @@ import './App.css';
 const MarketAnalysisCharts = () => {
   const [activeTab, setActiveTab] = useState('growth');
 
-  // Market Growth Data
+  // Market Growth Data (converted from USD Billions to INR Crores)
   const marketGrowthData = [
-    { year: '2024', value: 2.44, projected: false },
-    { year: '2025', value: 3.12, projected: true },
-    { year: '2026', value: 4.87, projected: true },
-    { year: '2027', value: 7.23, projected: true },
-    { year: '2028', value: 9.78, projected: true },
+    { year: '2024', value: 20252, projected: false },
+    { year: '2025', value: 25896, projected: true },
+    { year: '2026', value: 40421, projected: true },
+    { year: '2027', value: 60009, projected: true },
+    { year: '2028', value: 81174, projected: true },
   ];
 
   // Competition Comparison
@@ -64,14 +64,14 @@ const MarketAnalysisCharts = () => {
         {activeTab === 'growth' && (
           <div className="chart-section">
             <h3 className="chart-title">
-              Indian Auto Parts E-commerce Market Growth (in Billion USD)
+              Indian Auto Parts E-commerce Market Growth (in Crores INR)
             </h3>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart data={marketGrowthData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="year" />
                 <YAxis />
-                <Tooltip formatter={(value) => `${value}B`} />
+                <Tooltip formatter={(value) => `₹${value.toLocaleString('en-IN')} Cr`} />
                 <Legend />
                 <Line 
                   type="monotone" 
@@ -84,7 +84,7 @@ const MarketAnalysisCharts = () => {
               </LineChart>
             </ResponsiveContainer>
             <div className="chart-note">
-              CAGR: 21.9% | Current Penetration: &lt;1% | Potential: $9.78B by 2028
+              CAGR: 21.9% | Current Penetration: &lt;1% | Potential: ₹81,174 Crores by 2028
             </div>
           </div>
         )}
